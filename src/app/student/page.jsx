@@ -2,9 +2,11 @@
 import { useAddStudentMutation } from '@/redux/services/student/studentApi'
 import React, { useEffect, useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 const initialState={name:'',email:'',home:'',taka:''}
 
 const page = () => {
+    const thisUser = useSelector((state)=>state.authSlice.user?.name)
     const [addStudent,{isSuccess,isError}]=useAddStudentMutation();
     const[student,setStudent]=useState(initialState)
     const chang=(e)=>{
@@ -13,7 +15,9 @@ const page = () => {
     const click=async(e)=>{
         e.preventDefault();
         try {
-            await addStudent(student)
+            const data = {name:student.name,email:student.email,home:student.home,
+                                                    taka:student.taka,author:thisUser}
+             await addStudent(data)
             setStudent({name:'',email:'',home:'',taka:''})
         } catch (error) {
             console.log('add not fount',error)

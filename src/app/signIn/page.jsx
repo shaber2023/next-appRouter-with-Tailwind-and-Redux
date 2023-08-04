@@ -47,7 +47,7 @@ const page = () => {
             <button className="... ring-2 ring-pink-500 ring-inset my-2 p-1 w-full rounded-md"
                 onClick={click} >Sign In</button>
                  <ToastContainer />
-                 <p>Don’t have account?<Link href='/signIn'>Sign Up</Link></p>
+                 <p>Don’t have account?<Link href='/signUp'>Sign Up</Link></p>
         </div>
     </div>
   )

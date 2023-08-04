@@ -1,8 +1,11 @@
+"use client"
+import useAuthCheck from '@/hook/useAuthCheck'
 import Link from 'next/link'
 import React from 'react'
 
 const Header = () => {
-  return (
+  const authCheck = useAuthCheck();
+  return !authCheck ? <div>checking auth shaber</div>:
     <div>
            <div className='grid grid-cols-2 p-4 bg-sky-700'>
         <div>
@@ -16,7 +19,7 @@ const Header = () => {
         </div>
     </div>
     </div>
-  )
+  
 }
 
 export default Header
